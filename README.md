@@ -5,8 +5,12 @@ How to use the downloaded files
 
 Blog app:-
 List of Features: 
-  Feature #1: User Login (no sign up for now)
-  Feature #2: Creating a post ( save and view all posts )
-  Feature #3: Edit/Delete a post
-  Feature #4: Mark post as favourite
-  Feature #5: Add comments
+Feature #1: User Login (no sign up for now)
+  
+Feature #2: Creating a post ( save and view all posts )
+
+Feature #3: Edit/Delete a post
+  
+Feature #4: Mark post as favourite
+  
+Feature #5: Add comments
