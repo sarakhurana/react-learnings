@@ -1,6 +1,16 @@
 How to use the downloaded files
 
-1) Run "npm install" in the extracted folder
-2) Run "npm start" to view the project
+1) Run "yarn install" in the extracted folder
+2) Run "yarn start" to view the project
 
-Compare my code to yours to solve issues you might encounter. You may also copy the content of src/ into your own project's src/ folder to use your project setup (which might've been created with a different create-react-app version) and still use my code.
+Blog app:-
+List of Features: 
+Feature #1: User Login (no sign up for now)
+  
+Feature #2: Creating a post ( save and view all posts )
+
+Feature #3: Edit/Delete a post
+  
+Feature #4: Mark post as favourite
+  
+Feature #5: Add comments
