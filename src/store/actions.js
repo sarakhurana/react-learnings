@@ -1,4 +1,34 @@
-export const INCREMENT ='INCREMENT'
-export const DECREMENT ='DECREMENT'
-export const ADD ='ADD'
-export const SUBTRACT ='SUBTRACT'
+import axios from 'axios';
+
+export const INCREMENT = "INCREMENT";
+export const DECREMENT = "DECREMENT";
+export const ADD = "ADD";
+export const SUBTRACT = "SUBTRACT";
+export const CREATE_POST = "CREATE_POST";
+export const GET_POSTS = "GET_POST";
+export const GET_POSTS_FAILURE = "GET_POST_FAILURE";
+
+
+export const getPosts = posts => ({
+  type: GET_POSTS,
+  payload: posts
+});
+
+export const getPostFailure = () => ({
+  type: GET_POSTS_FAILURE,
+});
+
+export const fetchPosts = async (dispatch) => {
+  try {
+    const response = await axios.get("http://localhost:3000/posts");
+    const posts = response.data;
+    dispatch(getPosts(posts));
+  } catch (e) {
+    dispatch(getPostFailure());
+  }
+};
+
+export const createPost =(post) => ({
+    type: CREATE_POST,
+    payload: post
+})

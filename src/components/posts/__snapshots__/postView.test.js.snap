@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostView should render 1`] = `
+<DocumentFragment>
+  <div
+    class="post-view-container"
+  >
+    <div
+      class="create-post-container"
+    >
+      <label>
+        Title
+      </label>
+      <input
+        class="text-post-title"
+        name="Title"
+        placeholder="Enter Title"
+        type="text"
+      />
+      <input
+        class="text-post-body"
+        name="Post"
+        placeholder="Enter Post"
+      />
+      <button
+        class="btn-create-post"
+      >
+        Create Post
+      </button>
+    </div>
+    <div
+      class="post-container"
+    />
+  </div>
+</DocumentFragment>
+`;

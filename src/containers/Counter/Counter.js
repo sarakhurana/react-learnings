@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import CounterControl from "../../components/CounterControl/CounterControl";
 import CounterOutput from "../../components/CounterOutput/CounterOutput";
 import * as actionTypes from "../../store/actions";
-import { CounterContext } from "../../context/CounterContext";
+import { Context } from "../../context/Context";
 
 const Counter = () => {
-  const { dispatch, state } = useContext(CounterContext);
+  const { dispatch, state } = useContext(Context);
   return (
     <div>
-      <CounterOutput value={state.counter} />
+      <CounterOutput value={state.counter.counter} />
       <CounterControl
         label="Increment"
         clicked={() => dispatch({ type: actionTypes.INCREMENT })}
