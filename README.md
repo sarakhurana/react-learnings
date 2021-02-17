@@ -2,6 +2,7 @@ How to use the downloaded files
 
 1) Run "yarn install" in the extracted folder
 2) Run "yarn start" to view the project
+3) to start json server json-server --watch db.json  
 
 Blog app:-
 List of Features: 

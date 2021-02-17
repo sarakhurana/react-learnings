@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../context/Context";
-import { createPost, CREATE_POST } from "../../store/actions";
+import { createPost } from "../../store/actions";
+import uuid from 'react-uuid'
 import "./createPost.css";
 
 const CreatePost = () => {
@@ -26,7 +27,7 @@ const CreatePost = () => {
       <button
         className="btn-create-post"
         onClick={() =>
-          dispatch(createPost({ title: postTitle, body: postBody }))
+          dispatch(createPost({ title: postTitle, body: postBody, postId: uuid()}))
         }
       >
         Create Post

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
@@ -6,12 +6,12 @@ export const ADD = "ADD";
 export const SUBTRACT = "SUBTRACT";
 export const CREATE_POST = "CREATE_POST";
 export const GET_POSTS = "GET_POST";
+export const DELETE_POST = "DELETE_POST";
 export const GET_POSTS_FAILURE = "GET_POST_FAILURE";
 
-
-export const getPosts = posts => ({
+export const getPosts = (posts) => ({
   type: GET_POSTS,
-  payload: posts
+  payload: posts,
 });
 
 export const getPostFailure = () => ({
@@ -28,7 +28,12 @@ export const fetchPosts = async (dispatch) => {
   }
 };
 
-export const createPost =(post) => ({
-    type: CREATE_POST,
-    payload: post
-})
+export const createPost = (post) => ({
+  type: CREATE_POST,
+  payload: post,
+});
+
+export const deletePost = (index) => ({
+  type: DELETE_POST,
+  payload: index,
+});

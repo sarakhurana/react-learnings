@@ -15,4 +15,7 @@
 }
 .btn-create-post{
     background: bisque;
+    width: 100px;
+    height: 30px;
+    align-self: center;
 }
