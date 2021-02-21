@@ -19,6 +19,15 @@ const postReducer = (state = initialState, action) => {
       );
       return { ...state, posts: updatedArray };
     }
+      case actionTypes.FAVOURITE_POST: {
+        const posts=state.posts;
+        const index=posts.findIndex(post=>post.postId===payload.id)
+        const newStatus= !posts[index].isFavourite
+        const updatedState=state.posts;
+        updatedState[index]={...state.posts[index], isFavourite:newStatus}
+        return {...state, posts:updatedState};
+    }
+  
     default:
       return state;
   }

@@ -8,6 +8,8 @@ export const CREATE_POST = "CREATE_POST";
 export const GET_POSTS = "GET_POST";
 export const DELETE_POST = "DELETE_POST";
 export const GET_POSTS_FAILURE = "GET_POST_FAILURE";
+export const FAVOURITE_POST = "FAVOURITE_POST";
+export const UNFAVOURITE_POST = "UNFAVOURITE_POST";
 
 export const getPosts = (posts) => ({
   type: GET_POSTS,
@@ -35,5 +37,10 @@ export const createPost = (post) => ({
 
 export const deletePost = (index) => ({
   type: DELETE_POST,
+  payload: index,
+});
+
+export const favouritePost = (index) => ({
+  type: FAVOURITE_POST,
   payload: index,
 });

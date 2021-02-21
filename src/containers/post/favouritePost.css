@@ -1,0 +1,10 @@
+.btn-favourite{
+    background: url("../../assets/unfav.svg");
+    width:22px;
+    height: 20px;
+}
+.btn-favourite-active{
+    background: url("../../assets/fav.svg");
+    width:22px;
+    height: 20px;
+}

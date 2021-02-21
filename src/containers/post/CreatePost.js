@@ -27,7 +27,7 @@ const CreatePost = () => {
       <button
         className="btn-create-post"
         onClick={() =>
-          dispatch(createPost({ title: postTitle, body: postBody, postId: uuid()}))
+          dispatch(createPost({ title: postTitle, body: postBody, postId: uuid(), isFavourite:false}))
         }
       >
         Create Post
