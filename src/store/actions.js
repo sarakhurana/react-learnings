@@ -5,6 +5,7 @@ export const DECREMENT = "DECREMENT";
 export const ADD = "ADD";
 export const SUBTRACT = "SUBTRACT";
 export const CREATE_POST = "CREATE_POST";
+export const EDIT_POST = "EDIT_POST";
 export const GET_POSTS = "GET_POST";
 export const DELETE_POST = "DELETE_POST";
 export const GET_POSTS_FAILURE = "GET_POST_FAILURE";
@@ -44,3 +45,8 @@ export const favouritePost = (index) => ({
   type: FAVOURITE_POST,
   payload: index,
 });
+
+export const editPost = (post) => ({
+  type: EDIT_POST,
+  payload: post
+})

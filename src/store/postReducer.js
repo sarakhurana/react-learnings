@@ -15,19 +15,25 @@ const postReducer = (state = initialState, action) => {
       return state;
     case actionTypes.DELETE_POST: {
       const updatedArray = state.posts.filter(
-        result => result.postId !== payload.id
+        result => result.postId !== payload
       );
       return { ...state, posts: updatedArray };
     }
       case actionTypes.FAVOURITE_POST: {
         const posts=state.posts;
-        const index=posts.findIndex(post=>post.postId===payload.id)
+        const index=posts.findIndex(post=>post.postId===payload)
         const newStatus= !posts[index].isFavourite
         const updatedState=state.posts;
         updatedState[index]={...state.posts[index], isFavourite:newStatus}
         return {...state, posts:updatedState};
     }
-  
+    case actionTypes.EDIT_POST: {
+      const posts=state.posts;
+      const index=posts.findIndex(post=>post.postId===payload.postId)
+      const updatedState=state.posts;
+      updatedState[index]={ ...state.posts[index], title: payload.title, body: payload.body}
+      return {...state, posts:updatedState};
+  }
     default:
       return state;
   }
