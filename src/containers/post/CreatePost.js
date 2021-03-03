@@ -13,6 +13,7 @@ const CreatePost = () => {
       <label>Title</label>
       <input
         className="text-post-title"
+        data-testid="test-post-title"
         type="text"
         name="Title"
         placeholder="Enter Title"
@@ -20,12 +21,14 @@ const CreatePost = () => {
       ></input>
       <input
         className="text-post-body"
+        data-testid="test-post-body"
         name="Post"
         placeholder="Enter Post"
         onChange={(event) => setPostBody(event.target.value)}
       ></input>
       <button
         className="btn-create-post"
+        data-testid="test-create-button"
         onClick={() =>
           dispatch(createPost({ title: postTitle, body: postBody, postId: uuid(), isFavourite:false}))
         }
