@@ -3,7 +3,7 @@ import { Context } from "../../context/Context";
 import { editPost } from "../../store/actions";
 import "./createPost.css";
 
-const EditPost = ({postId}) => {
+const EditPost = ({ postId, isEditMode }) => {
   const { dispatch } = useContext(Context);
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
@@ -26,12 +26,12 @@ const EditPost = ({postId}) => {
       <button
         className="btn-create-post"
         onClick={() =>
-          dispatch(editPost({ title: postTitle, body: postBody, postId: postId}))
+          dispatch(editPost({ title: postTitle, body: postBody, postId: postId, isEditMode: false}))
         }
       >
         Save Post
       </button>
-    </div>
+    </div> 
   );
 };
 

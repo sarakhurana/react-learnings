@@ -12,8 +12,9 @@ const PostView = () => {
   const getPostRef = useRef(false);
   const [isEditPost, setIsEditPost] = useState(false);
 
-  const handleClick = () => {
-    setIsEditPost(!isEditPost);
+  const handleClick = (post) => {
+    post.isEditMode=true;
+    setIsEditPost(post.isEditMode)
   };
   useEffect(() => {
     if (!getPostRef.current) {
@@ -23,6 +24,7 @@ const PostView = () => {
   }, [getPostRef]);
   return (
     <div className="post-view-container">
+      <div className="header">Blog App</div>
       <CreatePost />
       <div className="post-container">
         {state.post.posts.map((post, index) => {
@@ -31,8 +33,8 @@ const PostView = () => {
               <div className="post-title">{post.title} </div>
               <div className="post-body">{post.body}</div>
               <DeletePost postId={post.postId} />
-              <button className = "post-btn" onClick={handleClick}>Edit</button>
-              {isEditPost && <EditPost postId={post.postId} />}
+              <button className = "post-btn" onClick={()=>handleClick(post)}>Edit</button>
+              {post.isEditMode && <EditPost postId={post.postId} isEditMode={post.isEditMode}/>}
               <FavouritePost postId={post.postId} />
             </li>
           );

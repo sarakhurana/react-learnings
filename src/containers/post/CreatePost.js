@@ -10,7 +10,6 @@ const CreatePost = () => {
   const [postBody, setPostBody] = useState("");
   return (
     <div className="create-post-container">
-      <label>Title</label>
       <input
         className="text-post-title"
         data-testid="test-post-title"
@@ -30,10 +29,10 @@ const CreatePost = () => {
         className="btn-create-post"
         data-testid="test-create-button"
         onClick={() =>
-          dispatch(createPost({ title: postTitle, body: postBody, postId: uuid(), isFavourite:false}))
+          dispatch(createPost({ title: postTitle, body: postBody, postId: uuid(), isFavourite:false, isEditMode: false}))
         }
       >
-        Create Post
+        Create
       </button>
     </div>
   );

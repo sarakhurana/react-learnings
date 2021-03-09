@@ -3,19 +3,27 @@
     flex-direction: row;
     align-items: center;
     padding: 10px;
+    justify-content: center;
 }
 .text-post-title{
-    width: 100px;
+    width: 174px;
     margin: 20px;
+    height: 55px;
+    text-align: center;
+    border: 1px solid cadetblue;
+    text-align: inherit;
 }
 .text-post-body{
     width: 400px;
     height: 60px;
     margin: 20px;
+    border: 1px solid cadetblue;
+    text-align: inherit;
 }
 .btn-create-post{
-    background: bisque;
+    background:darkseagreen;
     width: 100px;
     height: 30px;
     align-self: center;
+    border-radius: 8px 8px;
 }

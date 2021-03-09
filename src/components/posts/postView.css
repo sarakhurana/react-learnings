@@ -14,7 +14,7 @@
     padding: 10px;
     font-size: 20px;
     font-weight: 600px;
-    border: 1px solid black;
+    border: 1px solid #ccc;
     margin: 10px;
     width: 800px;
 }
@@ -23,9 +23,20 @@
     padding: 10px;
 }
 .post-btn{
-    background: bisque;
+    background: darkseagreen;
     width: 100px;
     height: 30px;
     align-self: center;
     margin-left: 5px;
+    border-radius: 8px 8px;
+}
+
+.header{
+    width: 100%;
+    height: 50px;
+    background: cadetblue;
+    text-align: initial;
+    font-size: 27px;
+    color: snow;
+    padding: 10px 20px;
 }

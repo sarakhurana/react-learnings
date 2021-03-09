@@ -4,31 +4,36 @@
       "postId": 1,
       "title": "First Post",
       "body": "This is the first post",
-      "isFavourite": false
+      "isFavourite": false,
+       "isEditMode": false
     },
     {
       "postId": 2,
       "title": "Second Post",
       "body": "This is the Second post",
-      "isFavourite": false
+      "isFavourite": false,
+      "isEditMode": false
     },
     {
       "postId": 3,
       "title": "Third Post",
       "body": "This is the Third post",
-      "isFavourite": false
+      "isFavourite": false, 
+      "isEditMode": false
     },
     {
       "postId": 4,
       "title": "Fourth Post",
       "body": "This is the Fourth post",
-      "isFavourite": false
+      "isFavourite": false,
+      "isEditMode": false
     },
     {
       "postId": 5,
       "title": "Fifth Post",
       "body": "This is the Fifth post",
-      "isFavourite": false
+      "isFavourite": false,
+      "isEditMode": false
     }
   ]
 }
