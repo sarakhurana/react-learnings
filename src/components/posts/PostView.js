@@ -30,12 +30,16 @@ const PostView = () => {
         {state.post.posts.map((post, index) => {
           return (
             <li key={index}>
+              <div className="post-content">
               <div className="post-title">{post.title} </div>
               <div className="post-body">{post.body}</div>
-              <DeletePost postId={post.postId} />
-              <button className = "post-btn" onClick={()=>handleClick(post)}>Edit</button>
-              {post.isEditMode && <EditPost postId={post.postId} isEditMode={post.isEditMode}/>}
-              <FavouritePost postId={post.postId} />
+              </div>
+              <div className="post-controls">
+              <span><FavouritePost postId={post.postId} /></span>
+              <span><DeletePost postId={post.postId} /></span>
+              <span><button className = "post-btn" onClick={()=>handleClick(post)}>Edit</button></span>
+              {post.isEditMode && <EditPost postId={post.postId}/>}
+              </div>
             </li>
           );
         })}

@@ -1,28 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreatePost should render 1`] = `
+exports[`EditPost should render 1`] = `
 <DocumentFragment>
   <div
     class="create-post-container"
   >
+    <label>
+      Title
+    </label>
     <input
       class="text-post-title"
-      data-testid="test-post-title"
       name="Title"
       placeholder="Enter Title"
       type="text"
     />
     <input
       class="text-post-body"
-      data-testid="test-post-body"
       name="Post"
       placeholder="Enter Post"
     />
     <button
       class="btn-create-post"
-      data-testid="test-create-button"
     >
-      Create
+      Save Post
     </button>
   </div>
 </DocumentFragment>

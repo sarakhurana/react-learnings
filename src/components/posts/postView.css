@@ -14,9 +14,9 @@
     padding: 10px;
     font-size: 20px;
     font-weight: 600px;
-    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     margin: 10px;
-    width: 800px;
+    width: 100%;
 }
 .post-title{
     font-size: 20px;
@@ -39,4 +39,19 @@
     font-size: 27px;
     color: snow;
     padding: 10px 20px;
+}
+
+.post-content{
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-controls{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 42px;
+}
+.post-controls span{
+    padding: 5px;
 }

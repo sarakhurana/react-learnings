@@ -5,6 +5,11 @@ exports[`PostView should render 1`] = `
   <div
     class="post-view-container"
   >
+    <div
+      class="header"
+    >
+      Blog App
+    </div>
     <label>
       Enter Post
     </label>

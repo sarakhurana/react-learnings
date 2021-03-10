@@ -1,11 +1,15 @@
-import { act, fireEvent, render } from "@testing-library/react";
-import { renderHook } from "@testing-library/react-hooks";
-import { useContext } from "react";
-import PostView from "../../components/posts/PostView";
-import { Context, StateProvider } from "../../context/Context";
+import { fireEvent, render } from "@testing-library/react";
+import { createPost, CREATE_POST } from "../../store/actions";
 import CreatePost from "./CreatePost";
+import configureMockStore from "redux-mock-store";
+
+const mockStore = configureMockStore();
 
 describe("CreatePost", () => {
+  let store;
+  beforeEach(() => {
+    store = mockStore({ post: []});
+  });
 
   it("should render", () => {
     const { asFragment } = render(<CreatePost />);
@@ -24,50 +28,27 @@ describe("CreatePost", () => {
     expect(postInput.value).toBe("Post body");
   });
 
-  it("should create post", async() => {
-    const { getByTestId } = render(
-      <StateProvider>
-        <CreatePost />
-      </StateProvider>
+  it("should dispatch createPost", async () => {
+    store.dispatch(
+      createPost({
+        title: "title",
+        body: "body",
+        postId: 1,
+        isFavourite: false,
+        isEditMode: false,
+      })
     );
-    const createButton = getByTestId("test-create-button");
-    const titleInput = getByTestId("test-post-title");
-    const postInput = getByTestId("test-post-body");
-
-    fireEvent.change(titleInput, { target: { value: "First Post" } });
-    fireEvent.change(postInput, { target: { value: "Post body" } });
-    fireEvent.click(createButton);
-
-     act(async() => {
-      const {asFragment, findByText } = render(
-        <StateProvider>
-          <PostView />
-        </StateProvider>
-      );
-      expect(asFragment()).toMatchSnapshot();
-      const element = await findByText("First Post");
-      expect(element).toBeInTheDocument();
-     
-    });
+    expect(store.getActions()).toEqual([
+      {
+        type: CREATE_POST,
+        payload: {
+          title: "title",
+          body: "body",
+          postId: 1,
+          isFavourite: false,
+          isEditMode: false,
+        },
+      },
+    ]);
   });
-    
 });
-
-//  it("should update state in redux", () => {
-  //     const state={};
-      
-  //   const { getByTestId } = render(
-  //     <Context.Provider value={{state:state, dispatch:dispatch}}>
-  //       <CreatePost />
-  //     </Context.Provider>
-  //   );
-  //   const titleInput = getByTestId("test-post-title");
-  //   const postInput = getByTestId("test-post-body");
-  //   const createButton = getByTestId("test-create-button");
-
-  //   fireEvent.change(titleInput, { target: { value: "First Post" } });
-  //   fireEvent.change(postInput, { target: { value: "Post body" } });
-  //   // fireEvent.click(createButton);
-  //   // expect(dispatch).toHaveBeenCalledTimes(1);
-  //   // expect(state).toBe("First Post");
-  // });

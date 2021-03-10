@@ -3,7 +3,7 @@ import { Context } from "../../context/Context";
 import { editPost } from "../../store/actions";
 import "./createPost.css";
 
-const EditPost = ({ postId, isEditMode }) => {
+const EditPost = ({ postId}) => {
   const { dispatch } = useContext(Context);
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");

@@ -1,46 +1,24 @@
-import { act, fireEvent, render } from "@testing-library/react";
-import { renderHook } from "@testing-library/react-hooks";
-import { useContext } from "react";
-import PostView from "../../components/posts/PostView";
-import { Context, StateProvider } from "../../context/Context";
+import { render } from "@testing-library/react";
 import DeletePost from "./DeletePost";
+import configureMockStore from "redux-mock-store";
+import { deletePost, DELETE_POST } from "../../store/actions";
+
+const mockStore = configureMockStore();
 
 describe("DeletePost", () => {
-
+  let store;
+  beforeEach(() => {
+    store = mockStore({ post: ["abc"] });
+  });
   it("should render", () => {
-    const { asFragment } = render(<DeletePost />);
+    const { asFragment } = render(
+        <DeletePost postId={1} />
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("should delete post", () => {
-    const state = {
-      posts: [
-        {
-          postId: 1,
-          title: "First Post",
-          body: "This is the first post",
-          isFavourite: false,
-        },
-      ],
-    };
-    const { getByTestId } = render(
-      <StateProvider>
-        <DeletePost id={1} />
-      </StateProvider>
-    );
-    const deleteButton = getByTestId("test-delete-btn");
-
-    fireEvent.click(deleteButton);
-
-    act(async () => {
-      const { asFragment,findByText } = render(
-        <StateProvider state={state}>
-          <PostView />
-        </StateProvider>
-      );
-    //   const element = await findByText("First Post");
-    //   expect(element).toBeInTheDocument();
-      expect(asFragment()).toMatchSnapshot();
-    });
+  it("should dispatch deletePost", () => {
+    store.dispatch(deletePost(1));
+    expect(store.getActions()).toEqual([{ type: DELETE_POST, payload: 1 }]);
   });
 });
