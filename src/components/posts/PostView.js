@@ -14,7 +14,7 @@ const PostView = () => {
 
   const handleClick = (post) => {
     post.isEditMode=true;
-    setIsEditPost(post.isEditMode)
+    setIsEditPost(true)
   };
   useEffect(() => {
     if (!getPostRef.current) {
@@ -38,7 +38,7 @@ const PostView = () => {
               <span><FavouritePost postId={post.postId} /></span>
               <span><DeletePost postId={post.postId} /></span>
               <span><button className = "post-btn" onClick={()=>handleClick(post)}>Edit</button></span>
-              {post.isEditMode && <EditPost postId={post.postId}/>}
+              {post.isEditMode && <EditPost postId={post.postId} setIsEditPost={setIsEditPost}/>}
               </div>
             </li>
           );

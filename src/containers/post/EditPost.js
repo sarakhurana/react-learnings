@@ -3,12 +3,16 @@ import { Context } from "../../context/Context";
 import { editPost } from "../../store/actions";
 import "./createPost.css";
 
-const EditPost = ({ postId}) => {
+const EditPost = ({ postId, setIsEditPost}) => {
   const { dispatch } = useContext(Context);
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
+  const handleEditClick=()=>{
+    dispatch(editPost({ title: postTitle, body: postBody, postId: postId, isEditMode: false}))
+  }
   return (
     <div className="create-post-container">
+          {setIsEditPost(false)}
       <label>Title</label>
       <input
         className="text-post-title"
@@ -24,10 +28,8 @@ const EditPost = ({ postId}) => {
         onChange={(event) => setPostBody(event.target.value)}
       ></input>
       <button
-        className="btn-create-post"
-        onClick={() =>
-          dispatch(editPost({ title: postTitle, body: postBody, postId: postId, isEditMode: false}))
-        }
+        className="btn-post"
+        onClick={handleEditClick}
       >
         Save Post
       </button>

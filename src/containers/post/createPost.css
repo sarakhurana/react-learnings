@@ -20,10 +20,18 @@
     border: 1px solid cadetblue;
     text-align: inherit;
 }
-.btn-create-post{
+.btn-post{
     background:darkseagreen;
     width: 100px;
     height: 30px;
     align-self: center;
     border-radius: 8px 8px;
+}
+.btn-start-post{
+    background:cadetblue;
+    width: 200px;
+    height: 30px;
+    align-self: center;
+    border-radius: 8px 8px;
+    border: 1px;
 }

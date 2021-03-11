@@ -19,7 +19,11 @@
     width: 100%;
 }
 .post-title{
-    font-size: 20px;
+    font-size: 30px;
+    padding: 10px;
+}
+.post-body{
+    font-size: 30px;
     padding: 10px;
 }
 .post-btn{
@@ -42,14 +46,14 @@
 }
 
 .post-content{
-    align-items: flex-start;
+    align-items: center;
     display: flex;
     flex-direction: column;
 }
 
 .post-controls{
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     margin-top: 42px;
 }
 .post-controls span{

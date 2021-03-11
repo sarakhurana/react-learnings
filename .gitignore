@@ -1,3 +1,6 @@
 node_modules/
 package-lock.json
 how-to-use.txt
+yarn.lock
+yarn-error.log
+.DS_Store
