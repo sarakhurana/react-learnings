@@ -11,26 +11,20 @@ describe("CreatePost", () => {
     store = mockStore({ post: []});
   });
 
-  it("should render", () => {
-    const { asFragment } = render(<CreatePost />);
+  it("should render if isCreatePost is false", () => {
+    const { asFragment } = render(<CreatePost isCreatePost={false} setCreatePost={jest.fn()} />);
     expect(asFragment()).toMatchSnapshot();
   });
   
-  it("on click of create button should render post form fields",()=>{
-    const {asFragment, getByTestId} = render(<CreatePost/>);
+  it("should render post form fields if iscreatePost is true ",()=>{
+    const {asFragment, getByTestId} = render(<CreatePost isCreatePost={true} setCreatePost={jest.fn()}/>);
 
     expect(asFragment()).toMatchSnapshot();
-    const button = getByTestId("test-create-button");
-    fireEvent.click(button);
-
     expect(getByTestId("test-post-title")).toBeInTheDocument();
   })
 
   it("should change value in input field", () => {
-    const { getByTestId } = render(<CreatePost />);
-    const button = getByTestId("test-create-button");
-    fireEvent.click(button);
-
+    const { getByTestId } = render(<CreatePost isCreatePost={true} setCreatePost={jest.fn()}/>);
     const titleInput = getByTestId("test-post-title");
     const postInput = getByTestId("test-post-body");
    

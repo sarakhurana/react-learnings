@@ -43,8 +43,16 @@
     font-size: 27px;
     color: snow;
     padding: 10px 20px;
+    display: flex;
 }
-
+.header-create-post{
+    margin-left: 1400px;
+    white-space: nowrap;
+}
+.btn-create-post{
+    color: white;
+    font-size: large;
+}
 .post-content{
     align-items: center;
     display: flex;

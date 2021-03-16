@@ -1,5 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`PostView should open form for creating new post on button click 1`] = `
+<DocumentFragment>
+  <div
+    class="post-view-container"
+  >
+    <div
+      class="header"
+    >
+      <div
+        class="title"
+      >
+        Blog App
+      </div>
+      <div
+        class="header-create-post"
+      >
+        <button
+          class="btn-create-post"
+          data-testid="test-create-button"
+        >
+          Create post
+        </button>
+      </div>
+    </div>
+    <label>
+      Enter Post
+    </label>
+    <input
+      data-testid="test-create-post"
+    />
+    <div
+      class="post-container"
+    />
+  </div>
+</DocumentFragment>
+`;
+
 exports[`PostView should render 1`] = `
 <DocumentFragment>
   <div
@@ -8,14 +45,22 @@ exports[`PostView should render 1`] = `
     <div
       class="header"
     >
-      Blog App
+      <div
+        class="title"
+      >
+        Blog App
+      </div>
+      <div
+        class="header-create-post"
+      >
+        <button
+          class="btn-create-post"
+          data-testid="test-create-button"
+        >
+          Create post
+        </button>
+      </div>
     </div>
-    <label>
-      Enter Post
-    </label>
-    <input
-      data-testid="test-create-post"
-    />
     <div
       class="post-container"
     />

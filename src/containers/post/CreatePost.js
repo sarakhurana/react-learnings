@@ -4,15 +4,15 @@ import { createPost } from "../../store/actions";
 import uuid from "react-uuid";
 import "./createPost.css";
 
-const CreatePost = () => {
+const CreatePost = ({isCreatePost, setCreatePost}) => {
   const { dispatch } = useContext(Context);
-  const [isCreatePost, setCreatePost] = useState(false);
+  // const [isCreatePost, setCreatePost] = useState(false);
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
 
-  const handleCreatePostClick = () => {
-    setCreatePost(true);
-  };
+  // const handleCreatePostClick = () => {
+  //   setCreatePost(true);
+  // };
 
   const handleDispatchClick = () => {
     setCreatePost(false)
@@ -53,16 +53,17 @@ const CreatePost = () => {
           </button>
         </div>
       ) : (
-        <div className="create-post-btn-container">
-          <span className="text-new-post">Write a new post!</span>
-          <button
-            className="btn-create-post"
-            data-testid="test-create-button"
-            onClick={handleCreatePostClick}
-          >
-            Create post
-          </button>
-        </div>
+        <></>
+        // <div className="create-post-btn-container">
+        //   <span className="text-new-post">Write a new post!</span>
+        //   <button
+        //     className="btn-create-post"
+        //     data-testid="test-create-button"
+        //     onClick={handleCreatePostClick}
+        //   >
+        //     Create post
+        //   </button>
+        // </div>
       )}
     </>
   );

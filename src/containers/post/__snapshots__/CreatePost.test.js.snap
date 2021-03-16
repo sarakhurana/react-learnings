@@ -1,40 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreatePost on click of create button should render post form fields 1`] = `
-<DocumentFragment>
-  <div
-    class="create-post-btn-container"
-  >
-    <span
-      class="text-new-post"
-    >
-      Write a new post!
-    </span>
-    <button
-      class="btn-create-post"
-      data-testid="test-create-button"
-    >
-      Create post
-    </button>
-  </div>
-</DocumentFragment>
-`;
+exports[`CreatePost should render if isCreatePost is false 1`] = `<DocumentFragment />`;
 
-exports[`CreatePost should render 1`] = `
+exports[`CreatePost should render post form fields if iscreatePost is true  1`] = `
 <DocumentFragment>
   <div
-    class="create-post-btn-container"
+    class="create-post-container"
   >
-    <span
-      class="text-new-post"
-    >
-      Write a new post!
-    </span>
+    <input
+      class="text-post-title"
+      data-testid="test-post-title"
+      name="Title"
+      placeholder="Enter Title"
+      type="text"
+    />
+    <input
+      class="text-post-body"
+      data-testid="test-post-body"
+      name="Post"
+      placeholder="Enter Post"
+    />
     <button
-      class="btn-create-post"
-      data-testid="test-create-button"
+      class="btn-post"
     >
-      Create post
+      Post
     </button>
   </div>
 </DocumentFragment>
