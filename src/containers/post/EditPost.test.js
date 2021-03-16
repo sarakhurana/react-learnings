@@ -12,7 +12,7 @@ describe("EditPost", () => {
   });
 
   it("should render", () => {
-    const { asFragment } = render(<EditPost />);
+    const { asFragment } = render(<EditPost setIsEditPost={jest.fn()} postId={1} />);
     expect(asFragment()).toMatchSnapshot();
   });
 

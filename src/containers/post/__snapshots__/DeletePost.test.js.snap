@@ -3,7 +3,7 @@
 exports[`DeletePost should render 1`] = `
 <DocumentFragment>
   <button
-    class="btn-create-post"
+    class="btn-post"
     data-testid="test-delete-btn"
   >
     Delete

@@ -20,7 +20,7 @@ exports[`EditPost should render 1`] = `
       placeholder="Enter Post"
     />
     <button
-      class="btn-create-post"
+      class="btn-post"
     >
       Save Post
     </button>

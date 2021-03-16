@@ -13,14 +13,14 @@ jest.mock("../../containers/post/CreatePost", () => () => {
     </>
   );
 });
-jest.mock("../../containers/post/EditPost", () => () => {
-  return (
-    <>
-      <label>Edit Post</label>
-      <input data-testid="test-edit-post" />
-    </>
-  );
-});
+// jest.mock("../../containers/post/EditPost", () => () => {
+//   return (
+//     <>
+//       <label>Edit Post</label>
+//       <input data-testid="test-edit-post" />
+//     </>
+//   );
+// });
 
 describe("PostView", () => {
   let store;

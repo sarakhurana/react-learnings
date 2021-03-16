@@ -47,7 +47,6 @@ const CreatePost = () => {
           ></input>
           <button
             className="btn-post"
-            data-testid="test-create-button"
             onClick={handleDispatchClick}
           >
             Post
@@ -55,13 +54,13 @@ const CreatePost = () => {
         </div>
       ) : (
         <div className="create-post-btn-container">
-          {/* <span>Create a new post!</span> */}
+          <span className="text-new-post">Write a new post!</span>
           <button
-            className="btn-start-post"
+            className="btn-create-post"
             data-testid="test-create-button"
             onClick={handleCreatePostClick}
           >
-            Start a new post
+            Create post
           </button>
         </div>
       )}

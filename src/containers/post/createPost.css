@@ -27,11 +27,18 @@
     align-self: center;
     border-radius: 8px 8px;
 }
-.btn-start-post{
+.create-post-btn-container{
+    margin: 20px;
+}
+.btn-create-post{
     background:cadetblue;
-    width: 200px;
+    width: 100px;
     height: 30px;
     align-self: center;
     border-radius: 8px 8px;
     border: 1px;
+}
+.text-new-post{
+   margin: 20px;
+   font-size: x-large;
 }
