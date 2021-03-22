@@ -8,11 +8,11 @@ const EditPost = ({ postId, setIsEditPost}) => {
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
   const handleEditClick=()=>{
+    setIsEditPost(false)
     dispatch(editPost({ title: postTitle, body: postBody, postId: postId, isEditMode: false}))
   }
   return (
     <div className="create-post-container">
-          {setIsEditPost(false)}
       <label>Title</label>
       <input
         className="text-post-title"

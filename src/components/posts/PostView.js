@@ -6,6 +6,7 @@ import { Context } from "../../context/Context";
 import "./postView.css";
 import { fetchPosts } from "../../store/actions";
 import EditPost from "../../containers/post/EditPost";
+import ReactModal from "react-modal";
 
 const PostView = () => {
   const { state, dispatch } = useContext(Context);
@@ -65,12 +66,18 @@ const PostView = () => {
                     Edit
                   </button>
                 </span>
-                {post.isEditMode && (
-                  <EditPost
-                    postId={post.postId}
-                    setIsEditPost={setIsEditPost}
-                  />
-                )}
+                  <ReactModal
+                    className="modal-container"
+                    overlayClassName="modal-overlay"
+                    isOpen={post.isEditMode&&isEditPost}
+                    ariaHideApp={false}
+                    onRequestClose={()=>setIsEditPost(false)}
+                  >
+                    <EditPost
+                      postId={post.postId}
+                      setIsEditPost={setIsEditPost}
+                    />
+                  </ReactModal>
               </div>
             </li>
           );
