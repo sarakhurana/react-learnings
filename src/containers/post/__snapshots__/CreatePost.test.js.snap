@@ -7,24 +7,36 @@ exports[`CreatePost should render post form fields if iscreatePost is true  1`] 
   <div
     class="create-post-container"
   >
-    <input
-      class="text-post-title"
-      data-testid="test-post-title"
-      name="Title"
-      placeholder="Enter Title"
-      type="text"
-    />
-    <input
-      class="text-post-body"
-      data-testid="test-post-body"
-      name="Post"
-      placeholder="Enter Post"
-    />
-    <button
-      class="btn-post"
+    <form
+      action="#"
     >
-      Post
-    </button>
+      <label>
+        Title
+      </label>
+      <input
+        class="text-post-title"
+        data-testid="test-post-title"
+        name="title"
+        type="text"
+        value=""
+      />
+      <label>
+        Post
+      </label>
+      <input
+        class="text-post-body"
+        data-testid="test-post-body"
+        name="post"
+        type="text"
+        value=""
+      />
+      <button
+        class="btn-post"
+        type="submit"
+      >
+        Post
+      </button>
+    </form>
   </div>
 </DocumentFragment>
 `;

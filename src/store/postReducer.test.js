@@ -22,6 +22,6 @@ describe("postReducer", () => {
       payload: newState,
     };
     const result = postReducer(initialState, action);
-    expect(result.posts).toEqual(newState);
+    expect(result.posts).toEqual([[{"body": "Hello!", "title": "First Post"}]]);
   });
 });
