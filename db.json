@@ -4,6 +4,7 @@
       "postId": 1,
       "title": "First Post",
       "body": "This is the first post",
+      "image": "assets/image1.jpeg",
       "isFavourite": false,
        "isEditMode": false
     },
@@ -11,6 +12,7 @@
       "postId": 2,
       "title": "Second Post",
       "body": "This is the Second post",
+      "image": "assets/image1.jpeg",
       "isFavourite": false,
       "isEditMode": false
     },
@@ -18,6 +20,7 @@
       "postId": 3,
       "title": "Third Post",
       "body": "This is the Third post",
+      "image": "src/assets/image1.jpeg",
       "isFavourite": false, 
       "isEditMode": false
     },
@@ -25,6 +28,7 @@
       "postId": 4,
       "title": "Fourth Post",
       "body": "This is the Fourth post",
+      "image": "assets/image1.jpeg",
       "isFavourite": false,
       "isEditMode": false
     },
@@ -32,6 +36,7 @@
       "postId": 5,
       "title": "Fifth Post",
       "body": "This is the Fifth post",
+      "image": "assets/image1.jpeg",
       "isFavourite": false,
       "isEditMode": false
     }

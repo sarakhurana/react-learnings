@@ -7,6 +7,8 @@ import "./postView.css";
 import { fetchPosts } from "../../store/actions";
 import EditPost from "../../containers/post/EditPost";
 import ReactModal from "react-modal";
+import  UploadImage  from "./UploadImage";
+import img from "../../assets/image1.jpeg"
 
 const PostView = () => {
   const { state, dispatch } = useContext(Context);
@@ -49,6 +51,10 @@ const PostView = () => {
             <li key={index}>
               <div className="post-content">
                 <div className="post-title">{post.title} </div>
+                <div className="post-image">
+                  {/* <img src={img}></img> */}
+                  <img src={post.image} alt={post.title}></img>
+                </div>
                 <div className="post-body">{post.body}</div>
               </div>
               <div className="post-controls">
