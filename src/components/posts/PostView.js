@@ -7,8 +7,8 @@ import "./postView.css";
 import { fetchPosts } from "../../store/actions";
 import EditPost from "../../containers/post/EditPost";
 import ReactModal from "react-modal";
-import  UploadImage  from "./UploadImage";
-import img from "../../assets/image1.jpeg"
+import UploadImage from "./UploadImage";
+import img from "../../assets/image1.jpeg";
 
 const PostView = () => {
   const { state, dispatch } = useContext(Context);
@@ -33,7 +33,11 @@ const PostView = () => {
   return (
     <div className="post-view-container">
       <div className="header">
-        <div className="title">Blog App</div>
+        <div className="header-title-elements">
+          <div className="lady"></div>
+        <div className="title"></div>
+        <div className="likes-photo"></div>
+        </div>
         <div className="header-create-post">
           <button
             className="btn-create-post"
@@ -44,49 +48,57 @@ const PostView = () => {
           </button>
         </div>
       </div>
-      <CreatePost setCreatePost={setCreatePost} isCreatePost={isCreatePost} />
+      <ReactModal
+        className="modal-container"
+        overlayClassName="modal-overlay"
+        isOpen={isCreatePost}
+        ariaHideApp={false}
+        onRequestClose={() => setIsCreatePost(false)}
+      >
+        <CreatePost setCreatePost={setCreatePost} isCreatePost={isCreatePost} />
+      </ReactModal>
       <div className="post-container">
-        {state.post.posts.map((post, index) => {
-          return (
-            <li key={index}>
-              <div className="post-content">
-                <div className="post-title">{post.title} </div>
-                <div className="post-image">
-                  {/* <img src={img}></img> */}
-                  <img src={post.image} alt={post.title}></img>
+        {state.post.posts.map((post, index) => {    
+             return( <li key={index}>
+                <div className="post-content">
+                  <div className="post-title">{post.title} </div>
+                  <div className="post-image">
+                    {post.image && (
+                      <img src={post.image} alt={post.title}></img>
+                    )}
+                  </div>
+                  <div className="post-body">{post.body}</div>
                 </div>
-                <div className="post-body">{post.body}</div>
-              </div>
-              <div className="post-controls">
-                <span>
-                  <FavouritePost postId={post.postId} />
-                </span>
-                <span>
-                  <DeletePost postId={post.postId} />
-                </span>
-                <span>
-                  <button
-                    className="post-btn"
-                    onClick={() => handleClick(post)}
-                  >
-                    Edit
-                  </button>
-                </span>
+                <div className="post-controls">
+                  <span>
+                    <FavouritePost postId={post.postId} />
+                  </span>
+                  <span>
+                    <DeletePost postId={post.postId} />
+                  </span>
+                  <span>
+                    <button
+                      className="post-btn"
+                      onClick={() => handleClick(post)}
+                    >
+                      Edit
+                    </button>
+                  </span>
                   <ReactModal
                     className="modal-container"
                     overlayClassName="modal-overlay"
-                    isOpen={post.isEditMode&&isEditPost}
+                    isOpen={post.isEditMode && isEditPost}
                     ariaHideApp={false}
-                    onRequestClose={()=>setIsEditPost(false)}
+                    onRequestClose={() => setIsEditPost(false)}
                   >
                     <EditPost
                       postId={post.postId}
                       setIsEditPost={setIsEditPost}
                     />
                   </ReactModal>
-              </div>
-            </li>
-          );
+                </div>
+              </li>
+            );
         })}
       </div>
     </div>

@@ -9,9 +9,17 @@ exports[`PostView should open form for creating new post on button click 1`] = `
       class="header"
     >
       <div
-        class="title"
+        class="header-title-elements"
       >
-        Blog App
+        <div
+          class="lady"
+        />
+        <div
+          class="title"
+        />
+        <div
+          class="likes-photo"
+        />
       </div>
       <div
         class="header-create-post"
@@ -24,12 +32,6 @@ exports[`PostView should open form for creating new post on button click 1`] = `
         </button>
       </div>
     </div>
-    <label>
-      Enter Post
-    </label>
-    <input
-      data-testid="test-create-post"
-    />
     <div
       class="post-container"
     />
@@ -46,9 +48,17 @@ exports[`PostView should render 1`] = `
       class="header"
     >
       <div
-        class="title"
+        class="header-title-elements"
       >
-        Blog App
+        <div
+          class="lady"
+        />
+        <div
+          class="title"
+        />
+        <div
+          class="likes-photo"
+        />
       </div>
       <div
         class="header-create-post"

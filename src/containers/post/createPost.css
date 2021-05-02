@@ -10,35 +10,42 @@
     margin: 20px;
     height: 55px;
     text-align: center;
-    border: 1px solid cadetblue;
+    border: 1px solid #cfdede;
     text-align: inherit;
 }
 .text-post-body{
     width: 400px;
     height: 60px;
     margin: 20px;
-    border: 1px solid cadetblue;
+    border: 1px solid #cfdede;
     text-align: inherit;
 }
+
 .btn-post{
-    background:darkseagreen;
-    width: 100px;
-    height: 30px;
-    align-self: center;
-    border-radius: 8px 8px;
-}
-.create-post-btn-container{
-    margin: 20px;
-}
-.btn-create-post{
     background:cadetblue;
     width: 100px;
     height: 30px;
     align-self: center;
     border-radius: 8px 8px;
     border: 1px;
+    cursor: pointer;
+}
+
+.btn-create-post{
+    background:#64cace;
+    width: 154px;
+    height: 54px;
+    align-self: center;
+    border-radius: 8px 8px;
+    border: 1px;
+    cursor: pointer;
 }
 .text-new-post{
    margin: 20px;
    font-size: x-large;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
 }

@@ -1,7 +1,5 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import ImageUploader from 'react-images-upload';
-import Axios from 'axios';
 
 const UploadComponent = ({ onImage}) => (
         <ImageUploader
@@ -22,7 +20,6 @@ const UploadComponent = ({ onImage}) => (
     const [errorMessage, setErrorMessage] = useState('');
 
     const onImage = async (failedImages, successImages) => {
-        console.log(successImages)
         if (!successImages) {
             setErrorMessage('missing image to upload');
             setProgress('uploadError');
@@ -48,7 +45,12 @@ const UploadComponent = ({ onImage}) => (
     const content = () => {
         switch (progress) {
             case 'getUpload':
-                return <UploadComponent onImage={onImage} />;
+                return (
+                 <>
+                {image && <img src={image}></img>}
+                <UploadComponent onImage={onImage} />
+                </>
+                );
             case 'uploading':
                 return <h2>Uploading....</h2>;
             case 'uploaded':
@@ -66,7 +68,6 @@ const UploadComponent = ({ onImage}) => (
     return (
         <div className="App">
             {content()}
-            {/* {image&&<img src={image}></img>} */}
         </div>
     );
 };

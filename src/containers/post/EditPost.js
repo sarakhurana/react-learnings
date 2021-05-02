@@ -3,13 +3,16 @@ import { Context } from "../../context/Context";
 import { editPost } from "../../store/actions";
 import { Formik, Form, Field } from 'formik';
 import "./createPost.css";
+import UploadImage from "../../components/posts/UploadImage";
+import { isEmpty } from "lodash";
 
-const EditPost = ({ postId, setIsEditPost}) => {
+const EditPost = ({ postId, setIsEditPost }) => {
   const { dispatch } = useContext(Context);
+  const [image, setImage] = useState(undefined);
   
   const handleEditClick=(postTitle, postBody)=>{
     setIsEditPost(false)
-    dispatch(editPost({ title: postTitle, body: postBody, postId: postId, isEditMode: false}))
+    dispatch(editPost({ title: postTitle, body: postBody, image: image, postId: postId, isEditMode: false}))
   }
   return (
     <div className="create-post-container">
@@ -19,38 +22,20 @@ const EditPost = ({ postId, setIsEditPost}) => {
             handleEditClick(values.title, values.post);
           }}
         >
-         {({ isSubmitting }) => (
+         {({ values }) => (
          <Form>
-           <label>Title</label>
-           <Field className="text-post-title" type="text" name="title" />
-           <label>Post</label>
+           <label>Edit your post</label>
+           {/* <Field className="text-post-title" type="text" name="title" /> */}
+           <UploadImage image={image} setImage={setImage}/>
            <Field className="text-post-body" type="text" name="post" />
-           <button className="btn-post" type="submit" disabled={isSubmitting}>
+           <div className="btn-container">
+           <button className="btn-post" type="submit" disabled={isEmpty(values.post)}>
              Save Post
            </button>
+           </div>
          </Form>
        )}
           </Formik>
-      {/* <label>Title</label>
-      <input
-        className="text-post-title"
-        type="text"
-        name="Title"
-        placeholder="Enter Title"
-        onChange={(event) => setPostTitle(event.target.value)}
-      ></input>
-      <input
-        className="text-post-body"
-        name="Post"
-        placeholder="Enter Post"
-        onChange={(event) => setPostBody(event.target.value)}
-      ></input>
-      <button
-        className="btn-post"
-        onClick={handleEditClick}
-      >
-        Save Post
-      </button> */}
     </div> 
   );
 };

@@ -33,7 +33,7 @@ const postReducer = (state = initialState, action) => {
       const posts=state.posts;
       const index=posts.findIndex(post=>post.postId===payload.postId)
       const updatedState=state.posts;
-      updatedState[index]={ ...state.posts[index], title: payload.title, body: payload.body}
+      updatedState[index]={ ...state.posts[index], title: payload.title, body: payload.body, image: payload.image}
       return {...state, posts:updatedState};
   }
     default:

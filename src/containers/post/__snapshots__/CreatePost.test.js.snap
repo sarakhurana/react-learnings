@@ -11,18 +11,51 @@ exports[`CreatePost should render post form fields if iscreatePost is true  1`] 
       action="#"
     >
       <label>
-        Title
+        Create a new Post
       </label>
-      <input
-        class="text-post-title"
-        data-testid="test-post-title"
-        name="title"
-        type="text"
-        value=""
-      />
-      <label>
-        Post
-      </label>
+      <div
+        class="App"
+      >
+        <div
+          class="fileUploader "
+        >
+          <div
+            class="fileContainer"
+          >
+            <img
+              alt="Upload Icon"
+              class="uploadIcon"
+              src="UploadIcon.svg"
+            />
+            <p
+              class=""
+            >
+              Maximum size file: 5MB
+            </p>
+            <div
+              class="errorsContainer"
+            />
+            <button
+              class="chooseFileButton "
+              type="button"
+            >
+              Choose an image
+            </button>
+            <input
+              accept="image/*"
+              name=""
+              type="file"
+            />
+            <div
+              class="uploadPicturesWrapper"
+            >
+              <div
+                style="position: relative; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; width: 100%;"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       <input
         class="text-post-body"
         data-testid="test-post-body"
@@ -30,12 +63,17 @@ exports[`CreatePost should render post form fields if iscreatePost is true  1`] 
         type="text"
         value=""
       />
-      <button
-        class="btn-post"
-        type="submit"
+      <div
+        class="btn-container"
       >
-        Post
-      </button>
+        <button
+          class="btn-post"
+          disabled=""
+          type="submit"
+        >
+          Post
+        </button>
+      </div>
     </form>
   </div>
 </DocumentFragment>

@@ -20,25 +20,21 @@ describe("CreatePost", () => {
     const {asFragment, getByTestId} = render(<CreatePost isCreatePost={true} setCreatePost={jest.fn()}/>);
 
     expect(asFragment()).toMatchSnapshot();
-    expect(getByTestId("test-post-title")).toBeInTheDocument();
+    expect(getByTestId("test-post-body")).toBeInTheDocument();
   })
 
   it("should change value in input field", () => {
     const { getByTestId } = render(<CreatePost isCreatePost={true} setCreatePost={jest.fn()}/>);
-    const titleInput = getByTestId("test-post-title");
     const postInput = getByTestId("test-post-body");
    
-    fireEvent.change(titleInput, { target: { value: "First Post" } });
     fireEvent.change(postInput, { target: { value: "Post body" } });
 
-    expect(titleInput.value).toBe("First Post");
     expect(postInput.value).toBe("Post body");
   });
 
   it("should dispatch createPost", async () => {
     store.dispatch(
       createPost({
-        title: "title",
         body: "body",
         postId: 1,
         isFavourite: false,
@@ -49,7 +45,6 @@ describe("CreatePost", () => {
       {
         type: CREATE_POST,
         payload: {
-          title: "title",
           body: "body",
           postId: 1,
           isFavourite: false,

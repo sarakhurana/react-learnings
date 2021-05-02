@@ -5,6 +5,7 @@ import { Formik, Form, Field } from 'formik';
 import uuid from "react-uuid";
 import "./createPost.css";
 import UploadImage from "../../components/posts/UploadImage";
+import { isEmpty } from "lodash";
 
 const CreatePost = ({isCreatePost, setCreatePost}) => {
   const { dispatch } = useContext(Context);
@@ -33,16 +34,18 @@ const CreatePost = ({isCreatePost, setCreatePost}) => {
             handleDispatchClick(values.title, values.post);
           }}
         >
-         {({ isSubmitting }) => (
+         {({ values} ) => (
          <Form>
-           <label>Title</label>
-           <Field className="text-post-title" data-testid="test-post-title" type="text" name="title" />
-           <label>Post</label>
+           {/* <label>Title</label>
+           <Field className="text-post-title" data-testid="test-post-title" type="text" name="title" /> */}
+            <label>Create a new Post</label>
            <UploadImage image={image} setImage={setImage}/>
            <Field className="text-post-body" data-testid="test-post-body" type="text" name="post" />
-           <button className="btn-post" type="submit" disabled={isSubmitting}>
+           <div className="btn-container">
+           <button className="btn-post" type="submit" disabled={isEmpty(values.post)}>
              Post
            </button>
+           </div>
          </Form>
        )}
           </Formik>
