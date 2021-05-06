@@ -7,8 +7,6 @@ import "./postView.css";
 import { fetchPosts } from "../../store/actions";
 import EditPost from "../../containers/post/EditPost";
 import ReactModal from "react-modal";
-import UploadImage from "./UploadImage";
-import img from "../../assets/image1.jpeg";
 
 const PostView = () => {
   const { state, dispatch } = useContext(Context);
@@ -35,8 +33,8 @@ const PostView = () => {
       <div className="header">
         <div className="header-title-elements">
           <div className="lady"></div>
-        <div className="title"></div>
-        <div className="likes-photo"></div>
+          <div className="title"></div>
+          <div className="likes-photo"></div>
         </div>
         <div className="header-create-post">
           <button
@@ -53,23 +51,26 @@ const PostView = () => {
         overlayClassName="modal-overlay"
         isOpen={isCreatePost}
         ariaHideApp={false}
-        onRequestClose={() => setIsCreatePost(false)}
+        onRequestClose={() => setCreatePost(false)}
       >
         <CreatePost setCreatePost={setCreatePost} isCreatePost={isCreatePost} />
       </ReactModal>
-      <div className="post-container">
-        {state.post.posts.map((post, index) => {    
-             return( <li key={index}>
-                <div className="post-content">
-                  <div className="post-title">{post.title} </div>
-                  <div className="post-image">
+      <div className="main-view">
+        <div className="sidebar-left"></div>
+        <div className="post-container">
+          {state.post.posts.map((post, index) => {
+            return (
+              <div key={index}>
+                {/* <div className="post-content"> */}
                     {post.image && (
+                      <>
                       <img src={post.image} alt={post.title}></img>
+                      <span className="post-description">{post.body}</span>
+                      </>
                     )}
-                  </div>
-                  <div className="post-body">{post.body}</div>
-                </div>
-                <div className="post-controls">
+                  {/* <div className="post-body">{post.body}</div> */}
+                {/* </div> */}
+                {/* <div className="post-controls">
                   <span>
                     <FavouritePost postId={post.postId} />
                   </span>
@@ -96,10 +97,12 @@ const PostView = () => {
                       setIsEditPost={setIsEditPost}
                     />
                   </ReactModal>
-                </div>
-              </li>
+                </div> */}
+              </div>
             );
-        })}
+          })}
+        </div>
+        <div className="sidebar-right"></div>
       </div>
     </div>
   );

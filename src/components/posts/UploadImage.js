@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ImageUploader from 'react-images-upload';
+import "./uploadImage.css"
 
 const UploadComponent = ({ onImage}) => (
         <ImageUploader
@@ -54,7 +55,7 @@ const UploadComponent = ({ onImage}) => (
             case 'uploading':
                 return <h2>Uploading....</h2>;
             case 'uploaded':
-                return <img src={image} alt="uploaded" />;
+                return <div className="image-container"><img src={image} alt="uploaded"></img></div>;
             case 'uploadError':
                 return (
                     <>
