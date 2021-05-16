@@ -1,6 +1,12 @@
 import React from "react";
 
 const SinglePostView = (post) => {
+    const [isEditPost, setIsEditPost] = useState(false);
+    const handleClick = (post) => {
+      post.isEditMode = true;
+      setIsEditPost(true);
+    };
+  console.log("here")
   return (
     <div className="post-content">
       <div className="post-title">{post.title} </div>
@@ -33,3 +39,5 @@ const SinglePostView = (post) => {
     </div>
   );
 };
+
+export default SinglePostView;

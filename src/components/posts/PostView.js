@@ -7,17 +7,19 @@ import "./postView.css";
 import { fetchPosts } from "../../store/actions";
 import EditPost from "../../containers/post/EditPost";
 import ReactModal from "react-modal";
+import { Link, NavLink } from "react-router-dom";
 
 const PostView = () => {
   const { state, dispatch } = useContext(Context);
   const getPostRef = useRef(false);
-  const [isEditPost, setIsEditPost] = useState(false);
+  // const [isEditPost, setIsEditPost] = useState(false);
   const [isCreatePost, setCreatePost] = useState(false);
+  // const [isPostView, setPostView] = useState(false)
 
-  const handleClick = (post) => {
-    post.isEditMode = true;
-    setIsEditPost(true);
-  };
+  // const handlePostClick = (id) => {
+  //   setIsEditPost(true);
+  // };
+
   const handleCreatePostClick = () => {
     setCreatePost(true);
   };
@@ -56,21 +58,28 @@ const PostView = () => {
         <CreatePost setCreatePost={setCreatePost} isCreatePost={isCreatePost} />
       </ReactModal>
       <div className="main-view">
-        <div className="sidebar-left"></div>
         <div className="post-container">
           {state.post.posts.map((post, index) => {
             return (
-              <div key={index}>
-                {/* <div className="post-content"> */}
-                    {post.image && (
-                      <>
+              <NavLink
+                to={{
+                  pathname: `/postview/${post.postId}`,
+                  aboutProps: {
+                    id: post.postId,
+                  },
+                }}
+              >
+                <div key={index}>
+                  {/* <div className="post-content"> */}
+                  {post.image && (
+                    <>
                       <img src={post.image} alt={post.title}></img>
                       <span className="post-description">{post.body}</span>
-                      </>
-                    )}
+                    </>
+                  )}
                   {/* <div className="post-body">{post.body}</div> */}
-                {/* </div> */}
-                {/* <div className="post-controls">
+                  {/* </div> */}
+                  {/* <div className="post-controls">
                   <span>
                     <FavouritePost postId={post.postId} />
                   </span>
@@ -98,11 +107,11 @@ const PostView = () => {
                     />
                   </ReactModal>
                 </div> */}
-              </div>
+                </div>
+              </NavLink>
             );
           })}
         </div>
-        <div className="sidebar-right"></div>
       </div>
     </div>
   );
