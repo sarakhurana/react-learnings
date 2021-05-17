@@ -1,24 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import CreatePost from "../../containers/post/CreatePost";
-import DeletePost from "../../containers/post/DeletePost";
-import FavouritePost from "../../containers/post/FavouritePost";
 import { Context } from "../../context/Context";
 import "./postView.css";
 import { fetchPosts } from "../../store/actions";
-import EditPost from "../../containers/post/EditPost";
 import ReactModal from "react-modal";
 import { Link, NavLink } from "react-router-dom";
 
 const PostView = () => {
   const { state, dispatch } = useContext(Context);
   const getPostRef = useRef(false);
-  // const [isEditPost, setIsEditPost] = useState(false);
   const [isCreatePost, setCreatePost] = useState(false);
-  // const [isPostView, setPostView] = useState(false)
-
-  // const handlePostClick = (id) => {
-  //   setIsEditPost(true);
-  // };
 
   const handleCreatePostClick = () => {
     setCreatePost(true);
@@ -61,54 +52,23 @@ const PostView = () => {
         <div className="post-container">
           {state.post.posts.map((post, index) => {
             return (
-              <NavLink
-                to={{
-                  pathname: `/postview/${post.postId}`,
-                  aboutProps: {
-                    id: post.postId,
-                  },
-                }}
-              >
-                <div key={index}>
-                  {/* <div className="post-content"> */}
+              // <Link
+              //     to={{
+              //       pathname: `/postview/${post.postId}`,
+              //       state: {
+              //         post: post,
+              //       },
+              //     }}
+              //   >
+              <div className="post-content" key={index}>
                   {post.image && (
                     <>
-                      <img src={post.image} alt={post.title}></img>
+                      <img className="post-image" src={post.image} alt={post.title}></img>
                       <span className="post-description">{post.body}</span>
                     </>
                   )}
-                  {/* <div className="post-body">{post.body}</div> */}
-                  {/* </div> */}
-                  {/* <div className="post-controls">
-                  <span>
-                    <FavouritePost postId={post.postId} />
-                  </span>
-                  <span>
-                    <DeletePost postId={post.postId} />
-                  </span>
-                  <span>
-                    <button
-                      className="post-btn"
-                      onClick={() => handleClick(post)}
-                    >
-                      Edit
-                    </button>
-                  </span>
-                  <ReactModal
-                    className="modal-container"
-                    overlayClassName="modal-overlay"
-                    isOpen={post.isEditMode && isEditPost}
-                    ariaHideApp={false}
-                    onRequestClose={() => setIsEditPost(false)}
-                  >
-                    <EditPost
-                      postId={post.postId}
-                      setIsEditPost={setIsEditPost}
-                    />
-                  </ReactModal>
-                </div> */}
-                </div>
-              </NavLink>
+              </div>
+              // </Link>
             );
           })}
         </div>

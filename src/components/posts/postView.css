@@ -1,60 +1,50 @@
-.post-view-container{
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
+.post-view-container {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 .post-description {
-    display: none;
-    position: absolute;
-  }
-.post-container{
-    /* display: flex;
+  display: none;
+  position: absolute;
+}
+.post-container {
+  /* display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin: 10px; */
-    display: grid;
-    grid-gap: 40px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 300px;
-    margin-top: 20px;
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: 300px;
+  margin-top: 20px;
 }
-/* .post-container > div:hover {
-    transform: scale(1.1);
-  } */
-.post-container > div:hover .post-description {
-    display: block;
-    text-align: center;
-    width: 600px;
-    max-height:200px;
-    overflow:hidden;
-    text-overflow: ellipsis;
-    content: "";
-    margin-bottom: 5px;
-    padding-bottom: 5px;
-  }
-  .post-container > div:hover .post-description:before {
-    content: "";
-    width:100%;
-    height:100%;    
-    position:absolute;
-    left:0;
-    top:0;
-    background:linear-gradient(transparent 150px, white);
+
+.post-content:hover .post-description {
+  display: block;
+  text-align: center;
+  width: 600px;
+  max-height: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  content: "";
+  margin-bottom: 5px;
+  padding-bottom: 5px;
 }
-  
-  .post-container > div:hover img {
-    opacity: 0.7;
-  }
-/* .post-container li{
-    list-style: none;
-    padding: 10px;
-    font-size: 20px;
-    font-weight: 600px;
-    border-bottom: 1px solid #ccc;
-    margin: 10px;
-    width: 100%;
-} */
-.post-container > div {
+.post-content:hover .post-description:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(transparent 150px, white);
+}
+
+.post-content:hover img {
+  opacity: 0.7;
+}
+
+.post-content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,114 +52,114 @@
   color: #20263f;
 }
 
-.post-container > div > img {
-    min-width: 600px;
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  img {
-    border-radius: 10px;
-    padding: 5px;
-  }
-.post-title{
-    font-size: 30px;
-    padding: 10px;
-}
-.post-body{
-    font-size: 30px;
-    padding: 10px;
-}
-.post-btn{
-    background:cadetblue;
-    width: 100px;
-    height: 30px;
-    align-self: center;
-    border-radius: 8px 8px;
-    border: 1px;
-    cursor: pointer;
+.post-image {
+  /* min-width: 600px; */
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.header{
-    height: 160px;
-    background: url("../../assets/header-background.png");
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
+img {
+  border-radius: 10px;
+  padding: 5px;
 }
-.header-title-elements{
-   display: flex;
+.post-title {
+  font-size: 30px;
+  padding: 10px;
 }
-.lady{
-    background: url("../../assets/header-lady.png");
-    width: 100px;
+.post-body {
+  font-size: 30px;
+  padding: 10px;
 }
-.title{
-    background: url("../../assets/header-title.png");
-    width: 250px;
-    background-repeat: no-repeat;
-    margin: 20px 20px;
-    height: 100px;
-}
-.header-create-post{
-    white-space: nowrap;
-    align-self: center;
+.post-btn {
+  background: cadetblue;
+  width: 100px;
+  height: 30px;
+  align-self: center;
+  border-radius: 8px 8px;
+  border: 1px;
+  cursor: pointer;
 }
 
-.btn-create-post{
-    background:cadetblue;
-    width: 154px;
-    height: 54px;
-    border-radius: 8px 8px;
-    border: 1px;
-    cursor: pointer;
-    color: white;
-    font-size: large;
+.header {
+  height: 160px;
+  background: url("../../assets/header-background.png");
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
 }
-.post-content{
+.header-title-elements {
+  display: flex;
+}
+.lady {
+  background: url("../../assets/header-lady.png");
+  width: 100px;
+}
+.title {
+  background: url("../../assets/header-title.png");
+  width: 250px;
+  background-repeat: no-repeat;
+  margin: 20px 20px;
+  height: 100px;
+}
+.header-create-post {
+  white-space: nowrap;
+  align-self: center;
+}
+
+.btn-create-post {
+  background: cadetblue;
+  width: 154px;
+  height: 54px;
+  border-radius: 8px 8px;
+  border: 1px;
+  cursor: pointer;
+  color: white;
+  font-size: large;
+}
+/* .post-content{
     align-items: center;
     display: flex;
     flex-direction: column;
-}
+} */
 
-.post-controls{
-    display: flex;
-    justify-content: center;
-    margin-top: 42px;
+.post-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 42px;
 }
-.post-controls span{
-    padding: 5px;
+.post-controls span {
+  padding: 5px;
 }
 
 .modal-container {
-    height: 100%;
-    left: 50%;
-    top: 50%;
-    width: 800px; 
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.16), 0px 5px 8px rgba(0, 0, 0, 0.08),
-      0px 1px 14px rgba(0, 0, 0, 0.24);
-    border-radius: 10px;
-    outline: none;
-    background: white;
-  }
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  width: 800px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.16), 0px 5px 8px rgba(0, 0, 0, 0.08),
+    0px 1px 14px rgba(0, 0, 0, 0.24);
+  border-radius: 10px;
+  outline: none;
+  background: white;
+}
 
-  .modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.75);
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    overflow-x: scroll;
-    padding: 1.25rem 1.25rem;
-    min-width: 100vw;
-    min-height: 100vh;
-  }
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  overflow-x: scroll;
+  padding: 1.25rem 1.25rem;
+  min-width: 100vw;
+  min-height: 100vh;
+}
 
-  .post-image{
-    max-width: 500px;
-    max-height: 500px;
-    overflow: hidden;
+.post-image {
+  max-width: 500px;
+  max-height: 500px;
+  overflow: hidden;
 }

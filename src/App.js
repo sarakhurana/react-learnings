@@ -13,13 +13,13 @@ class App extends Component {
             <Route exact path="/">
               <PostView />
             </Route>
-            <Route path="/postview">
+            <Route path="/homepage">
               <PostView />
             </Route>
             <Route
               path="/postview/:id"
               render={(props) => (
-                <SinglePostView post={props.match.params.id} />
+                <SinglePostView postId={props.match.params.id} {...props}/>
               )}
             />
           </Switch>

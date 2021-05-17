@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactModal from "react-modal";
+import { useLocation } from "react-router";
+import DeletePost from "../../containers/post/DeletePost";
+import EditPost from "../../containers/post/EditPost";
+import FavouritePost from "../../containers/post/FavouritePost";
 
-const SinglePostView = (post) => {
-    const [isEditPost, setIsEditPost] = useState(false);
-    const handleClick = (post) => {
-      post.isEditMode = true;
-      setIsEditPost(true);
-    };
-  console.log("here")
+const SinglePostView = () => {
+  const [isEditPost, setIsEditPost] = useState(false);
+  const handleClick = (post) => {
+    post.isEditMode = true;
+    setIsEditPost(true);
+  };
+  const location = useLocation();
+  const { post } = location.state;
   return (
     <div className="post-content">
       <div className="post-title">{post.title} </div>
