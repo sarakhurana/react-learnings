@@ -46,7 +46,9 @@ export const favouritePost = (index) => ({
   payload: index,
 });
 
-export const editPost = (post) => ({
-  type: EDIT_POST,
+export const editPost = (post) => {
+  console.log(post)
+ return( { type: EDIT_POST,
   payload: post
-})
+ })
+}

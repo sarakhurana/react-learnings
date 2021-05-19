@@ -48,14 +48,14 @@ const UploadComponent = ({ onImage}) => (
             case 'getUpload':
                 return (
                  <>
-                {image && <img src={image}></img>}
+                {image && <img className="uploaded-image" src={image}></img>}
                 <UploadComponent onImage={onImage} />
                 </>
                 );
             case 'uploading':
                 return <h2>Uploading....</h2>;
             case 'uploaded':
-                return <div className="image-container"><img src={image} alt="uploaded"></img></div>;
+                return <div className="image-container"><img src={image} className="uploaded-image" alt="uploaded"></img></div>;
             case 'uploadError':
                 return (
                     <>

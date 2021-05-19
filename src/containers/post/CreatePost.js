@@ -36,11 +36,8 @@ const CreatePost = ({isCreatePost, setCreatePost}) => {
         >
          {({ values} ) => (
          <Form>
-           {/* <label>Title</label>
-           <Field className="text-post-title" data-testid="test-post-title" type="text" name="title" /> */}
-            <label>Create a new Post</label>
            <UploadImage image={image} setImage={setImage}/>
-           <Field className="text-post-body" data-testid="test-post-body" type="text" name="post" />
+           <Field className="text-post-body" data-testid="test-post-body" type="text" name="post" placeholder="Enter your post"/>
            <div className="btn-container">
            <button className="btn-post" type="submit" disabled={isEmpty(values.post)}>
              Post

@@ -5,6 +5,7 @@ const initialState = {
 };
 
 const postReducer = (state = initialState, action) => {
+  console.log(action)
   const { type, payload } = action;
   switch (type) {
     case actionTypes.CREATE_POST: {    

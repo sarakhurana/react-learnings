@@ -52,23 +52,24 @@ const PostView = () => {
         <div className="post-container">
           {state.post.posts.map((post, index) => {
             return (
-              // <Link
-              //     to={{
-              //       pathname: `/postview/${post.postId}`,
-              //       state: {
-              //         post: post,
-              //       },
-              //     }}
-              //   >
-              <div className="post-content" key={index}>
+              <Link
+                 className="post-content"
+                  to={{
+                    pathname: `/postview/${post.postId}`,
+                    state: {
+                      post: post,
+                    },
+                  }}
+                >
+              {/* <div className="post-content" key={index}> */}
                   {post.image && (
                     <>
                       <img className="post-image" src={post.image} alt={post.title}></img>
                       <span className="post-description">{post.body}</span>
                     </>
                   )}
-              </div>
-              // </Link>
+              {/* </div> */}
+               </Link>
             );
           })}
         </div>

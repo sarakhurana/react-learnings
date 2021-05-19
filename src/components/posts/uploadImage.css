@@ -3,3 +3,7 @@
     max-height: 500px;
     overflow: hidden;
 }
+.uploaded-image{
+    max-width: 400px;
+    max-height: 500px;
+}

@@ -14,10 +14,9 @@ const SinglePostView = () => {
   const location = useLocation();
   const { post } = location.state;
   return (
-    <div className="post-content">
-      <div className="post-title">{post.title} </div>
+    <div className="single-post-view">
       <div className="post-image">
-        {post.image && <img src={post.image} alt={post.title}></img>}
+        {post.image && <img src={post.image} alt={post.body}></img>}
       </div>
       <div className="post-body">{post.body}</div>
       <div className="post-controls">
@@ -39,7 +38,7 @@ const SinglePostView = () => {
           ariaHideApp={false}
           onRequestClose={() => setIsEditPost(false)}
         >
-          <EditPost postId={post.postId} setIsEditPost={setIsEditPost} />
+          <EditPost post={post} setIsEditPost={setIsEditPost} />
         </ReactModal>
       </div>
     </div>
