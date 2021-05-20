@@ -4,7 +4,7 @@ import { Context } from "../../context/Context";
 import "./postView.css";
 import { fetchPosts } from "../../store/actions";
 import ReactModal from "react-modal";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PostView = () => {
   const { state, dispatch } = useContext(Context);
