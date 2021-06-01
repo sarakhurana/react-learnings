@@ -35,7 +35,7 @@ const PostView = () => {
             data-testid="test-create-button"
             onClick={handleCreatePostClick}
           >
-            Create post
+            Create Post
           </button>
         </div>
       </div>
