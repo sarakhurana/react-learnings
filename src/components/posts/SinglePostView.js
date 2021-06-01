@@ -5,6 +5,7 @@ import DeletePost from "../../containers/post/DeletePost";
 import EditPost from "../../containers/post/EditPost";
 import FavouritePost from "../../containers/post/FavouritePost";
 import { Context } from "../../context/Context";
+import usePostDetails from "./usePostDetails";
 
 const SinglePostView = () => {
   const [isEditPost, setIsEditPost] = useState(false);
@@ -13,11 +14,9 @@ const SinglePostView = () => {
     setIsEditPost(true);
   };
   const location = useLocation();
-  let { post } = location.state;
-  const { state } = useContext(Context);
-  const index = state.post.posts.findIndex((p) => post.postId === p.postId);
-
-  post = state.post.posts[index];
+  let { postId } = location.state;
+  const { findPost } = usePostDetails();
+  const post = findPost(postId)
 
   return (
     <>

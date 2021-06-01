@@ -19,7 +19,7 @@ class App extends Component {
             <Route
               path="/postview/:id"
               render={(props) => (
-                <SinglePostView postId={props.match.params.id} {...props}/>
+                <SinglePostView postId={props.match.params.id} />
               )}
             />
           </Switch>
