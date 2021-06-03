@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import ReactModal from "react-modal";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import DeletePost from "../../containers/post/DeletePost";
 import EditPost from "../../containers/post/EditPost";
 import FavouritePost from "../../containers/post/FavouritePost";
-import { Context } from "../../context/Context";
 import usePostDetails from "./usePostDetails";
 
 const SinglePostView = () => {
@@ -14,6 +13,7 @@ const SinglePostView = () => {
     setIsEditPost(true);
   };
   const location = useLocation();
+  const history = useHistory();
   let { postId } = location.state;
   const { findPost } = usePostDetails();
   const post = findPost(postId)
@@ -50,7 +50,7 @@ const SinglePostView = () => {
           </div>
         </div>
       ) : (
-        <div>This post has been deleted</div>
+         history.push("/homepage")
       )}
     </>
   );

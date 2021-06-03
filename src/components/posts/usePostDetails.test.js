@@ -10,10 +10,12 @@ describe("usePostDetails", () => {
   beforeEach(() => {
     store = mockStore({
       post: {
-        posts: [ {body: "abc"}],
-      },
-      counter:{counter:1}
-    });
+        posts: [ {
+          id: "1",
+          body: "abc"
+        }],
+      }
+      });
   });
 
   it("should findPost", () => {
