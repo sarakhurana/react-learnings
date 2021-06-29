@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@testing-library/react": "^11.2.5",
+    "@testing-library/react-hooks": "^6.0.0",
     "classnames": "^2.2.6",
     "font-awesome": "^4.7.0",
     "formik": "^2.2.6",
