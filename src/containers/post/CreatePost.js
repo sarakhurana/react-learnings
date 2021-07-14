@@ -1,50 +1,68 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../context/Context";
 import { createPost } from "../../store/actions";
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field } from "formik";
 import uuid from "react-uuid";
 import "./createPost.css";
 import UploadImage from "../../components/posts/UploadImage";
 import { isEmpty } from "lodash";
+import { createPostService } from "../../services/CreatePostService";
 
-const CreatePost = ({isCreatePost, setCreatePost}) => {
+const CreatePost = ({ isCreatePost, setCreatePost, getPosts }) => {
   const { dispatch } = useContext(Context);
   const [image, setImage] = useState(undefined);
 
-  const handleDispatchClick = (postTitle, postBody) => {
+  const handleCreatePost = async (postBody) => {
+    const post = { postId: uuid(), body: postBody };
+    const { result, error } = await createPostService(post);
+    if (!error) setCreatePost(false);
+    getPosts();
+  };
+  const handleDispatchClick = (postBody) => {
     dispatch(
       createPost({
-        title: postTitle,
         image: image,
         body: postBody,
         postId: uuid(),
         isFavourite: false,
         isEditMode: false,
       })
-    )
-    setCreatePost(false)
+    );
+    setCreatePost(false);
   };
   return (
     <>
       {isCreatePost ? (
         <div className="create-post-container">
           <Formik
-          initialValues={{ title: '', post: '' }}
-          onSubmit={(values) => {
-            handleDispatchClick(values.title, values.post);
-          }}
-        >
-         {({ values} ) => (
-         <Form>
-           <UploadImage image={image} setImage={setImage}/>
-           <Field className="text-post-body" data-testid="test-post-body" type="text" name="post" placeholder="Enter your post"/>
-           <div className="btn-container">
-           <button className="btn-post" type="submit" disabled={isEmpty(values.post)}>
-             Post
-           </button>
-           </div>
-         </Form>
-       )}
+            initialValues={{ post: "" }}
+            onSubmit={(values) => {
+              handleCreatePost(values.post);
+              // handleDispatchClick(values.post);
+            }}
+          >
+            {({ values }) => (
+              <Form>
+                <UploadImage image={image} setImage={setImage} />
+                <Field
+                  className="text-post-body"
+                  data-testid="test-post-body"
+                  type="text"
+                  name="post"
+                  placeholder="Enter your post"
+                />
+                <div className="btn-container">
+                  <button
+                    data-testid="test-create-post"
+                    className="btn-post"
+                    type="submit"
+                    disabled={isEmpty(values.post)}
+                  >
+                    Post
+                  </button>
+                </div>
+              </Form>
+            )}
           </Formik>
         </div>
       ) : (

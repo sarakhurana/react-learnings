@@ -8,16 +8,20 @@ const mockStore = configureMockStore();
 describe("EditPost", () => {
   let store;
   beforeEach(() => {
-    store = mockStore({ post: ["abc"] });
+    store = mockStore({ post: [{ image: "img", body: "abc" }] });
   });
 
   it("should render", () => {
-    const { asFragment } = render(<EditPost setIsEditPost={jest.fn()} postId={1} />);
+    const { asFragment } = render(
+      <EditPost setIsEditPost={jest.fn()} postId={1} />
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
   it("should dispatch editPost", () => {
-    store.dispatch(editPost({title: "new title", body: "new body"}));
-    expect(store.getActions()).toEqual([{ type: EDIT_POST, payload: {title: "new title", body: "new body"} }]);
+    store.dispatch(editPost({ image: "img", body: "new body" }));
+    expect(store.getActions()).toEqual([
+      { type: EDIT_POST, payload: { image: "img", body: "new body" } },
+    ]);
   });
 });

@@ -1,23 +1,40 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import CreatePost from "../../containers/post/CreatePost";
 import { Context } from "../../context/Context";
 import "./postView.css";
-import { fetchPosts } from "../../store/actions";
+import { fetchPosts, getPosts } from "../../store/actions";
 import ReactModal from "react-modal";
 import { Link } from "react-router-dom";
+import { getPostService } from "../../services/GetPostsService";
 
 const PostView = () => {
   const { state, dispatch } = useContext(Context);
   const getPostRef = useRef(false);
   const [isCreatePost, setCreatePost] = useState(false);
+  const [posts, setPosts] = useState(null);
+  const [error, setError] = useState(false);
 
   const handleCreatePostClick = () => {
     setCreatePost(true);
   };
 
-  useEffect(() => {
+  const getPosts = useCallback(async () => {
+    const { error, result } = await getPostService();
+    console.log(result);
+    if (!error) setPosts(result);
+    else setError(error);
+  });
+
+  useEffect(async () => {
     if (!getPostRef.current) {
-      fetchPosts(dispatch);
+      getPosts();
+      // fetchPosts(dispatch);
       getPostRef.current = true;
     }
   }, [getPostRef]);
@@ -46,35 +63,37 @@ const PostView = () => {
         ariaHideApp={false}
         onRequestClose={() => setCreatePost(false)}
       >
-        <CreatePost setCreatePost={setCreatePost} isCreatePost={isCreatePost} />
+        <CreatePost setCreatePost={setCreatePost} isCreatePost={isCreatePost} getPosts={getPosts}/>
       </ReactModal>
       <div className="main-view">
         <div className="post-container">
-          {state.post.posts.map((post, index) => {
-            return (
-              <Link
-                key={index}
-                className="post-content"
-                to={{
-                  pathname: `/postview/${post.postId}`,
-                  state: {
-                    postId: post.postId,
-                  },
-                }}
-              >
-                {post.image && (
-                  <>
-                    <img
-                      className="post-image"
-                      src={post.image}
-                      alt={post.title}
-                    ></img>
-                    <span className="post-description">{post.body}</span>
-                  </>
-                )}
-              </Link>
-            );
-          })}
+          {posts &&
+            posts.map((post, index) => {
+              return (
+                <div key={index}>{post.body}</div>
+                // <Link
+                //   key={index}
+                //   className="post-content"
+                //   to={{
+                //     pathname: `/postview/${post.postId}`,
+                //     state: {
+                //       postId: post.postId,
+                //     },
+                //   }}
+                // >
+                //   {post && (
+                //     <>
+                //       {post.image && <img
+                //         className="post-image"
+                //         src={post.image}
+                //         alt={post.title}
+                //       ></img>}
+                //       <span className="post-description">{post.body}</span>
+                //     </>
+                //   )}
+                // </Link>
+              );
+            })}
         </div>
       </div>
     </div>

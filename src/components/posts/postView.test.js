@@ -1,33 +1,41 @@
-import { act, fireEvent, render } from "@testing-library/react";
+import { act, fireEvent, render, waitFor } from "@testing-library/react";
 import { StateProvider } from "../../context/Context";
 import PostView from "./PostView";
 import configureMockStore from "redux-mock-store";
+import axiosConfig from "../../api/axiosConfig";
+import MockAdapter from "axios-mock-adapter";
+import { GET_POSTS } from "../../constants/Constants";
 
 const mockStore = configureMockStore();
 
-jest.mock("../../containers/post/CreatePost", () => ({isCreatePost}) => {
-  return (
-   isCreatePost?<>
+jest.mock("../../containers/post/CreatePost", () => ({ isCreatePost }) => {
+  return isCreatePost ? (
+    <>
       <label>Enter Post</label>
       <input data-testid="test-create-post" />
-    </>:<></>
+    </>
+  ) : (
+    <></>
   );
 });
 
 describe("PostView", () => {
+  const mockAxios = new MockAdapter(axiosConfig, {
+    delayResponse: 200,
+  });
   let store;
   beforeEach(() => {
     store = mockStore({ post: ["abc"] });
   });
-  it("should render", async() => {
+  it("should render", async () => {
     act(() => {
-      const {asFragment}= render(
+      const { asFragment } = render(
         <StateProvider store={store}>
           <PostView />
         </StateProvider>
-      )
+      );
       expect(asFragment()).toMatchSnapshot();
-      });
+    });
   });
 
   it("should give option to create post", () => {
@@ -51,6 +59,30 @@ describe("PostView", () => {
     const element = getByTestId("test-create-post");
 
     expect(element).toBeInTheDocument();
-    expect(asFragment()).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it("should make api call to fetch posts", async () => {
+    const posts = [
+      {
+        postId: "1",
+        body: "hello!",
+      },
+      {
+        postId: "2",
+        body: "new post",
+      },
+    ];
+    jest.spyOn(axiosConfig, "get").mockImplementation().mockResolvedValue({
+      status: 200,
+      data: posts,
+    });
+    render(
+      <StateProvider>
+        <PostView />
+      </StateProvider>
+    );
+
+    await waitFor(() => expect(axiosConfig.get).toHaveBeenCalledWith(GET_POSTS));
   });
 });

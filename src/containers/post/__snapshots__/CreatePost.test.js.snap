@@ -10,9 +10,6 @@ exports[`CreatePost should render post form fields if iscreatePost is true  1`] 
     <form
       action="#"
     >
-      <label>
-        Create a new Post
-      </label>
       <div
         class="App"
       >
@@ -60,6 +57,7 @@ exports[`CreatePost should render post form fields if iscreatePost is true  1`] 
         class="text-post-body"
         data-testid="test-post-body"
         name="post"
+        placeholder="Enter your post"
         type="text"
         value=""
       />
@@ -68,6 +66,7 @@ exports[`CreatePost should render post form fields if iscreatePost is true  1`] 
       >
         <button
           class="btn-post"
+          data-testid="test-create-post"
           disabled=""
           type="submit"
         >
